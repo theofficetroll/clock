@@ -41,12 +41,6 @@
         let hour = time.getHours();
         let minute = time.getMinutes();
         let second = time.getSeconds();
-        if (second <= 9) {
-          second = `0${second}`;
-        };
-        if (minute <= 9) {
-          minute = `0${minute}`;
-        };
         let base = ((hour % 4) * 60 + minute) * 255 / 239;
         if (hour < 4) {
           R = 255;
@@ -73,6 +67,12 @@
           G = 0;
           B = 255 - base;
         }
+        if (second <= 9) {
+          second = `0${second}`;
+        };
+        if (minute <= 9) {
+          minute = `0${minute}`;
+        };
         let color = `rgb(${R}, ${G}, ${B})`;
         $("div.background").css("background-color", color);
         $("div.time").html(`${hour}:${minute}:${second}`);
